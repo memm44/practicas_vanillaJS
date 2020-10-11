@@ -1,6 +1,5 @@
 //variables
 const listatweets = document.getElementById("lista-tweets");
-const ul = document.createElement('ul');
 //event listeners
 eventListeners();
 
@@ -9,7 +8,12 @@ function eventListeners() {
   document
     .querySelector("#formulario")
     .addEventListener("submit", agregarTweet);
+
+
+    listatweets.addEventListener('click',borrarTweet)
 }
+// borrar tweetes
+
 
 //funciones
 
@@ -29,13 +33,44 @@ function agregarTweet(e) {
   li.innerText = tweet;
   // la lista creada dinamicamente la agregamos al div que se almacena en la variable listatweets
   
-  ul.appendChild(li);
-  listatweets.appendChild(ul);
-  console.log(tweet);
+  li.appendChild(botonborrar);
+
+  //añadir a localstorage
+  listatweets.appendChild(li);
+  agregarTweetLocalStorage(tweet);
 }
 
 function borrarTweet(e) {
+    e.preventDefault();
+    // delegacion 
     if (e.target.className==='borrar-tweet') {
-        console.log("diste click en eliminar");     
+        e.target.parentElement.remove();  
     }
+
+
+}
+// Agrega tweet a localstorage object
+
+function agregarTweetLocalStorage(tweet) {
+  let tweets;
+  tweets = obtenerTweetsLocalStorage();
+  tweets.push(tweet);
+
+  // convertir de strinf a arreglo para local Storage
+  localStorage.setItem('tweets',JSON.stringify(tweets));
+  //agregar tweet a localstorage
+  // localStorage.setItem('tweets',tweet);
+  
+}
+
+function obtenerTweetsLocalStorage () {
+  let tweets;
+  if (localStorage.getItem('tweets')===null) {     
+    tweets= [];
+  }
+  else{ 
+    tweets= JSON.parse(localStorage.getItem('tweets'));
+  }
+  return tweets;
+
 }
