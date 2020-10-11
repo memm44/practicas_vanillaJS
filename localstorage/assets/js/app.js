@@ -1,6 +1,7 @@
 //variables
 const listatweets = document.getElementById("lista-tweets");
 const ol =document.createElement("ol");
+
 //event listeners
 eventListeners();
 
