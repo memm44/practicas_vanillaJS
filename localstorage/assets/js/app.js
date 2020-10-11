@@ -1,5 +1,6 @@
 //variables
 const listatweets = document.getElementById("lista-tweets");
+const ol =document.createElement("ol");
 //event listeners
 eventListeners();
 
@@ -36,7 +37,8 @@ function agregarTweet(e) {
   li.appendChild(botonborrar);
 
   //añadir a localstorage
-  listatweets.appendChild(li);
+  ol.appendChild(li)
+  listatweets.appendChild(ol);
   agregarTweetLocalStorage(tweet);
 }
 
