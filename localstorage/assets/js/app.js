@@ -1,7 +1,7 @@
-//variables
+//------------------------------------variables
 const listatweets = document.getElementById("lista-tweets");
 
-//event listeners
+//-----------------------------------event listeners
 eventListeners();
 
 function eventListeners() {
@@ -13,10 +13,7 @@ function eventListeners() {
   // preparamos el local storage cuando el documento este listo.
   document.addEventListener("DOMContentLoaded", localStorageListo);
 }
-
-
-//funciones
-
+//---------------------------------------funciones
 function agregarTweet(e) {
   // mata el proceso de recarga para operar con los elementos del DOM
   e.preventDefault();
@@ -32,7 +29,6 @@ function agregarTweet(e) {
   // agregamos un valor a un elemento de la lista con lo que tiene la variable tweet
   li.innerText = tweet;
   // la lista creada dinamicamente la agregamos al div que se almacena en la variable listatweets
-
   li.appendChild(botonborrar);
   //añadir a localstorage
   listatweets.appendChild(li);
@@ -50,7 +46,6 @@ function borrarTweet(e) {
 }
 
 //Mostrar datos de  LocalStorage en la lista de
-
 function localStorageListo() {
   let tweets;
   tweets = obtenerTweetsLocalStorage();
@@ -69,9 +64,7 @@ function localStorageListo() {
     listatweets.appendChild(li);
   });
 }
-
 // Agrega tweet a localstorage object
-
 function agregarTweetLocalStorage(tweet) {
   let tweets;
   tweets = obtenerTweetsLocalStorage();
@@ -82,7 +75,6 @@ function agregarTweetLocalStorage(tweet) {
   //agregar tweet a localstorage
   // localStorage.setItem('tweets',tweet);
 }
-
 // comprobar que hayan elementos en localStorage
 function obtenerTweetsLocalStorage() {
   let tweets;
@@ -93,6 +85,7 @@ function obtenerTweetsLocalStorage() {
   }
   return tweets;
 }
+//funcion para borrar tweets de local storage
 function borrarTweetLocalStorage (tweet) {
   let tweets,tweetBorrar;
   //elimina la x del tweet
